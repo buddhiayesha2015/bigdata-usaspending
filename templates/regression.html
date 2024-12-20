@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Regression Model (Predict <em>Award Amount</em>)</h2>
+<form method="POST" action="{{ url_for('regression') }}" class="mt-4">
+    <div class="form-group">
+        <label>Awarding Agency</label>
+        <select name="awarding_agency" class="form-control" required>
+            <option value="Department of Defense"
+                    {% if awarding_agency==
+            "Department of Defense" %} selected{% endif %}> Department of Defense</option>
+        </select>
+    </div>
+
+    <!-- awarding_sub_agency -->
+    <div class="form-group">
+        <label>Awarding Sub Agency</label>
+        <select name="awarding_sub_agency" class="form-control" required>
+            <option value="Department of the Navy"
+                    {% if awarding_sub_agency==
+            "Department of the Navy" %} selected{% endif %}>
+            Department of the Navy
+            </option>
+            <option value="Washington Headquarters Services"
+                    {% if awarding_sub_agency==
+            "Washington Headquarters Services" %} selected{% endif %}>
+            Washington Headquarters Services
+            </option>
+            <option value="Department of the Army"
+                    {% if awarding_sub_agency==
+            "Department of the Army" %} selected{% endif %}>
+            Department of the Army
+            </option>
+            <option value="Defense Contract Management Agency"
+                    {% if awarding_sub_agency==
+            "Defense Contract Management Agency" %} selected{% endif %}>
+            Defense Contract Management Agency
+            </option>
+            <option value="U.S. Special Operations Command"
+                    {% if awarding_sub_agency==
+            "U.S. Special Operations Command" %} selected{% endif %}>
+            U.S. Special Operations Command
+            </option>
+            <option value="Defense Logistics Agency"
+                    {% if awarding_sub_agency==
+            "Defense Logistics Agency" %} selected{% endif %}>
+            Defense Logistics Agency
+            </option>
+            <option value="Defense Health Agency"
+                    {% if awarding_sub_agency==
+            "Defense Health Agency" %} selected{% endif %}>
+            Defense Health Agency
+            </option>
+            <option value="Department of the Air Force"
+                    {% if awarding_sub_agency==
+            "Department of the Air Force" %} selected{% endif %}>
+            Department of the Air Force
+            </option>
+        </select>
+    </div>
+
+    <!-- contract_award_type -->
+    <div class="form-group">
+        <label>Contract Award Type</label>
+        <select name="contract_award_type" class="form-control" required>
+            <option value="BPA CALL"
+                    {% if contract_award_type==
+            "BPA CALL" %} selected{% endif %}>
+            BPA CALL
+            </option>
+            <option value="PURCHASE ORDER"
+                    {% if contract_award_type==
+            "PURCHASE ORDER" %} selected{% endif %}>
+            PURCHASE ORDER
+            </option>
+            <option value="DELIVERY ORDER"
+                    {% if contract_award_type==
+            "DELIVERY ORDER" %} selected{% endif %}>
+            DELIVERY ORDER
+            </option>
+        </select>
+    </div>
+
+    <!-- funding_agency -->
+    <div class="form-group">
+        <label>Funding Agency</label>
+        <select name="funding_agency" class="form-control" required>
+            <option value="Department of Veterans Affairs"
+                    {% if funding_agency==
+            "Department of Veterans Affairs" %} selected{% endif %}>
+            Department of Veterans Affairs
+            </option>
+            <option value="Environmental Protection Agency"
+                    {% if funding_agency==
+            "Environmental Protection Agency" %} selected{% endif %}>
+            Environmental Protection Agency
+            </option>
+            <option value="Department of Energy"
+                    {% if funding_agency==
+            "Department of Energy" %} selected{% endif %}>
+            Department of Energy
+            </option>
+            <option value="Department of Defense"
+                    {% if funding_agency==
+            "Department of Defense" %} selected{% endif %}>
+            Department of Defense
+            </option>
+            <option value="Department of Homeland Security"
+                    {% if funding_agency==
+            "Department of Homeland Security" %} selected{% endif %}>
+            Department of Homeland Security
+            </option>
+            <option value="Department of Agriculture"
+                    {% if funding_agency==
+            "Department of Agriculture" %} selected{% endif %}>
+            Department of Agriculture
+            </option>
+            <option value="Corps of Engineers - Civil Works"
+                    {% if funding_agency==
+            "Corps of Engineers - Civil Works" %} selected{% endif %}>
+            Corps of Engineers - Civil Works
+            </option>
+        </select>
+    </div>
+
+    <!-- funding_sub_agency -->
+    <div class="form-group">
+        <label>Funding Sub Agency</label>
+        <select name="funding_sub_agency" class="form-control" required>
+            <option value="Defense Finance and Accounting Service"
+                    {% if funding_sub_agency==
+            "Defense Finance and Accounting Service" %} selected{% endif %}>
+            Defense Finance and Accounting Service
+            </option>
+            <option value="Department of the Army"
+                    {% if funding_sub_agency==
+            "Department of the Army" %} selected{% endif %}>
+            Department of the Army
+            </option>
+            <option value="U.S. Army Corps of Engineers - Civil Program Financing Only"
+                    {% if funding_sub_agency==
+            "U.S. Army Corps of Engineers - Civil Program Financing Only" %} selected{% endif %}>
+            U.S. Army Corps of Engineers - Civil Program Financing Only
+            </option>
+            <option value="Department of Energy"
+                    {% if funding_sub_agency==
+            "Department of Energy" %} selected{% endif %}>
+            Department of Energy
+            </option>
+            <option value="National Geospatial-Intelligence Agency"
+                    {% if funding_sub_agency==
+            "National Geospatial-Intelligence Agency" %} selected{% endif %}>
+            National Geospatial-Intelligence Agency
+            </option>
+            <option value="Defense Health Agency"
+                    {% if funding_sub_agency==
+            "Defense Health Agency" %} selected{% endif %}>
+            Defense Health Agency
+            </option>
+            <option value="Department of the Air Force"
+                    {% if funding_sub_agency==
+            "Department of the Air Force" %} selected{% endif %}>
+            Department of the Air Force
+            </option>
+            <option value="Immediate Office of the Secretary of Defense"
+                    {% if funding_sub_agency==
+            "Immediate Office of the Secretary of Defense" %} selected{% endif %}>
+            Immediate Office of the Secretary of Defense
+            </option>
+            <option value="Department of the Navy"
+                    {% if funding_sub_agency==
+            "Department of the Navy" %} selected{% endif %}>
+            Department of the Navy
+            </option>
+            <option value="Washington Headquarters Services"
+                    {% if funding_sub_agency==
+            "Washington Headquarters Services" %} selected{% endif %}>
+            Washington Headquarters Services
+            </option>
+            <option value="Department of Veterans Affairs"
+                    {% if funding_sub_agency==
+            "Department of Veterans Affairs" %} selected{% endif %}>
+            Department of Veterans Affairs
+            </option>
+            <option value="Federal Emergency Management Agency"
+                    {% if funding_sub_agency==
+            "Federal Emergency Management Agency" %} selected{% endif %}>
+            Federal Emergency Management Agency
+            </option>
+            <option value="Defense Threat Reduction Agency"
+                    {% if funding_sub_agency==
+            "Defense Threat Reduction Agency" %} selected{% endif %}>
+            Defense Threat Reduction Agency
+            </option>
+            <option value="Uniformed Services University of the Health Sciences"
+                    {% if funding_sub_agency==
+            "Uniformed Services University of the Health Sciences" %} selected{% endif %}>
+            Uniformed Services University of the Health Sciences
+            </option>
+            <option value="Defense Advanced Research Projects Agency"
+                    {% if funding_sub_agency==
+            "Defense Advanced Research Projects Agency" %} selected{% endif %}>
+            Defense Advanced Research Projects Agency
+            </option>
+            <option value="Defense Logistics Agency"
+                    {% if funding_sub_agency==
+            "Defense Logistics Agency" %} selected{% endif %}>
+            Defense Logistics Agency
+            </option>
+            <option value="Agricultural Research Service"
+                    {% if funding_sub_agency==
+            "Agricultural Research Service" %} selected{% endif %}>
+            Agricultural Research Service
+            </option>
+            <option value="Defense Prisoner of War/Missing Personnel Office"
+                    {% if funding_sub_agency==
+            "Defense Prisoner of War/Missing Personnel Office" %} selected{% endif %}>
+            Defense Prisoner of War/Missing Personnel Office
+            </option>
+            <option value="Missile Defense Agency"
+                    {% if funding_sub_agency==
+            "Missile Defense Agency" %} selected{% endif %}>
+            Missile Defense Agency
+            </option>
+            <option value="Environmental Protection Agency"
+                    {% if funding_sub_agency==
+            "Environmental Protection Agency" %} selected{% endif %}>
+            Environmental Protection Agency
+            </option>
+            <option value="Defense Media Activity"
+                    {% if funding_sub_agency==
+            "Defense Media Activity" %} selected{% endif %}>
+            Defense Media Activity
+            </option>
+            <option value="U.S. Special Operations Command"
+                    {% if funding_sub_agency==
+            "U.S. Special Operations Command" %} selected{% endif %}>
+            U.S. Special Operations Command
+            </option>
+            <option value="Defense Information Systems Agency"
+                    {% if funding_sub_agency==
+            "Defense Information Systems Agency" %} selected{% endif %}>
+            Defense Information Systems Agency
+            </option>
+            <option value="Department of Defense Education Activity"
+                    {% if funding_sub_agency==
+            "Department of Defense Education Activity" %} selected{% endif %}>
+            Department of Defense Education Activity
+            </option>
+            <option value="Defense Human Resources Activity"
+                    {% if funding_sub_agency==
+            "Defense Human Resources Activity" %} selected{% endif %}>
+            Defense Human Resources Activity
+            </option>
+            <option value="Defense Contract Management Agency"
+                    {% if funding_sub_agency==
+            "Defense Contract Management Agency" %} selected{% endif %}>
+            Defense Contract Management Agency
+            </option>
+            <option value="Defense Commissary Agency"
+                    {% if funding_sub_agency==
+            "Defense Commissary Agency" %} selected{% endif %}>
+            Defense Commissary Agency
+            </option>
+        </select>
+    </div>
+
+    <!-- month / year -->
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label>Month (1-12)</label>
+            <input type="number" name="month" class="form-control"
+                   min="1" max="12" value="{{ month if month else 1 }}" required>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Year</label>
+            <input type="number" name="year" class="form-control"
+                   value="{{ year if year else 2023 }}" required>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Predict</button>
+</form>
+{% endblock %}

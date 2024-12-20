@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Awarding by Geography</h1>
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+    <h5 style="margin: 0;">Select type:</h5>
+    <select id="mapDropdown" class="form-control" style="max-width: 200px;">
+        <option value="recipient">Recipient</option>
+        <option value="subagency">Sub-Agency</option>
+    </select>
+</div>
+<div id="mapDiv" style="width: 100%; height: 600px;"></div>
+
+<h1 class="mt-5">Sankey Diagram (Awarding Agency to Recipient)</h1>
+<div id="sankeyDiv" style="width:100%; height:600px;"></div>
+
+<h1 class="mt-5">Pie Chart (Awarding Agency vs Award Amount)</h1>
+<div id="pieDiv" style="width:100%; height:500px;"></div>
+
+<h1 class="mt-5">Line Chart (Total Award Amount by Month)</h1>
+<div id="lineDiv" style="width:100%; height:500px;"></div>
+
+<script>
+    const mapRecipientData = JSON.parse('{{ map_recipient_data|tojson }}');
+    const mapSubagencyData = JSON.parse('{{ map_subagency_data|tojson }}');
+    const sankeyData = JSON.parse('{{ sankey_data|tojson }}');
+    const monthData = JSON.parse('{{ month_data|tojson }}');
+
+    // Geography Map
+    function plotMap(data, modeName) {
+        const lat = data.map(d => d.latitude);
+        const lon = data.map(d => d.longitude);
+        const size = data.map(d => Math.sqrt(d.total_award_amount || 0) / 100);  // Adjust scaling as needed
+        const text = data.map(d => {
+            if (modeName === "recipient") {
+                return `${d.recipient_name}: $${(d.total_award_amount || 0).toLocaleString()}`;
+            } else {
+                return `${d.awarding_sub_agency}: $${(d.total_award_amount || 0).toLocaleString()}`;
+            }
+        });
+
+        const trace = {
+            type: "scattergeo",
+            mode: "markers",
+            lat: lat,
+            lon: lon,
+            text: text,
+            hoverinfo: "text",
+            marker: {
+                size: size,
+                sizemode: "area",
+                sizeref: 2.0 * Math.max(...size) / (100 ** 2),
+                sizemin: 4,
+                color: "#FF5733",
+                opacity: 0.7,
+                line: {
+                    width: 1,
+                    color: "#B22222"
+                }
+            }
+        };
+
+        const layout = {
+            geo: {
+                scope: "usa",
+                projection: {type: "albers usa"},
+                showland: true,
+                landcolor: "#EAEAAE"
+            },
+            margin: {r: 0, t: 0, l: 0, b: 0}
+        };
+
+        Plotly.newPlot("mapDiv", [trace], layout, {responsive: true});
+    }
+
+    // Sankey Diagram
+    function plotSankey() {
+        const subagencies = [...new Set(sankeyData.map(d => d.awarding_sub_agency))];
+        const recipients = [...new Set(sankeyData.map(d => d.recipient_name))];
+
+        const nodeLabels = [...subagencies, ...recipients];
+
+        function getSubagencyIndex(sub) {
+            return subagencies.indexOf(sub);
+        }
+
+        function getRecipientIndex(rec) {
+            return subagencies.length + recipients.indexOf(rec);
+        }
+
+        const source = [];
+        const target = [];
+        const value = [];
+
+        sankeyData.forEach(d => {
+            const sIdx = getSubagencyIndex(d.awarding_sub_agency);
+            const rIdx = getRecipientIndex(d.recipient_name);
+            const val = d.total_award_amount || 0;
+            if (sIdx >= 0 && rIdx >= 0) {
+                source.push(sIdx);
+                target.push(rIdx);
+                value.push(val);
+            }
+        });
+
+        const data = {
+            type: "sankey",
+            orientation: "h",
+            node: {
+                pad: 15,
+                thickness: 20,
+                line: {color: "black", width: 0.5},
+                label: nodeLabels
+            },
+            link: {
+                source: source,
+                target: target,
+                value: value
+            }
+        };
+
+        const layout = {};
+
+        Plotly.newPlot("sankeyDiv", [data], layout, {responsive: true});
+    }
+
+    // Pie Chart
+    function plotPieChart() {
+        const subagencyMap = {};
+        monthData.forEach(d => {
+            const sub = d.awarding_sub_agency;
+            const amt = d.total_award_amount || 0;
+            subagencyMap[sub] = (subagencyMap[sub] || 0) + amt;
+        });
+
+        const labels = Object.keys(subagencyMap);
+        const values = Object.values(subagencyMap);
+
+        const data = [{
+            type: "pie",
+            labels: labels,
+            values: values,
+            textinfo: "percent",
+            hoverinfo: "label+value+percent",
+            marker: {
+                colors: Plotly.d3.scale.category10().range()
+            }
+        }];
+
+        const layout = {};
+
+        Plotly.newPlot("pieDiv", data, layout, {responsive: true});
+    }
+
+    // Line Chart
+    function plotLineChart() {
+        const monthMap = {};
+        monthData.forEach(d => {
+            const m = d.month;
+            const amt = d.total_award_amount || 0;
+            monthMap[m] = (monthMap[m] || 0) + amt;
+        });
+
+        // Sort months in ascending order
+        const sortedMonths = Object.keys(monthMap).map(k => parseInt(k)).sort((a, b) => a - b);
+        const yValues = sortedMonths.map(m => monthMap[m]);
+
+        const trace = {
+            x: sortedMonths,
+            y: yValues,
+            mode: "lines+markers",
+            type: "scatter",
+            line: {shape: "spline", color: "green"},
+            marker: {size: 8}
+        };
+
+        const data = [trace];
+
+        const layout = {
+            xaxis: {title: "Month", tickmode: "linear"},
+            yaxis: {title: "Total Award Amount ($)"}
+        };
+
+        Plotly.newPlot("lineDiv", data, layout, {responsive: true});
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        plotMap(mapRecipientData, "recipient");
+        plotSankey();
+        plotPieChart();
+        plotLineChart();
+
+        // Event listener for the map dropdown
+        document.getElementById("mapDropdown").addEventListener("change", function () {
+            if (this.value === "recipient") {
+                plotMap(mapRecipientData, "recipient");
+            } else {
+                plotMap(mapSubagencyData, "subagency");
+            }
+        });
+    });
+</script>
+{% endblock %}
