@@ -12,8 +12,12 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 
 import config
+from logging_config import setup_logging
+
+logger = setup_logging()
 
 app = Flask(__name__)
+logger.info("BigData & Tools USASpending Flask app initialized")
 
 # Get the secret key from the environment variable
 app.secret_key = os.getenv("BDT_SECRET_KEY")
@@ -39,7 +43,7 @@ try:
     cassandra_cluster = Cluster(contact_points=[config.CASSANDRA_HOST], port=config.CASSANDRA_PORT)
     cassandra_session = cassandra_cluster.connect("usaspending_data")
 except Exception as e:
-    print(f"Error connecting to Cassandra: {e}")
+    logger.error(f"Error connecting to Cassandra: {e}")
     spark.stop()
     raise e
 
@@ -401,30 +405,30 @@ def fetch_data():
 
                 if batch_counter >= batch_size:
                     batch_counter = 0
-                    print(f"Inserted {insert_count} records so far.")
+                    logger.info(f"Inserted {insert_count} records.")
 
                     # Wait for 3 to 5 seconds
                     wait_time = random.randint(3, 5)
-                    print(f"Waiting for {wait_time} seconds before next batch...")
+                    logger.info(f"Waiting for {wait_time} seconds before next batch...")
                     time.sleep(wait_time)
             page += 1
 
         except requests.exceptions.ConnectionError as ce:
-            print(f"Connection error encountered: {ce}")
-            print("Retrying after a short delay...")
+            logger.error(f"Connection error encountered: {ce}")
+            logger.error("Retrying after a 3 seconds delay...")
             time.sleep(3)
             continue
         except requests.exceptions.Timeout as te:
-            print(f"Request timed out: {te}")
-            print("Retrying after a short delay...")
+            logger.error(f"Request timed out: {te}")
+            logger.error("Retrying after a 3 seconds delay...")
             time.sleep(3)
             continue
         except requests.exceptions.HTTPError as he:
-            print(f"HTTP error occurred: {he}")
+            logger.error(f"HTTP error occurred: {he}")
             flash(f"HTTP error: {he}", "danger")
             return redirect(url_for("download_page"))
         except Exception as e:
-            print(f"An unexpected error occurred: {e}")
+            logger.error(f"An unexpected error occurred: {e}")
             flash(f"An unexpected error occurred: {e}", "danger")
             return redirect(url_for("download_page"))
 
@@ -440,7 +444,7 @@ def fetch_data():
             (download_id, download_start, download_end, insert_count)
         )
     except Exception as e:
-        print(f"Error recording download history: {e}")
+        logger.error(f"Error recording download history: {e}")
         flash("Data fetched but failed to record download history.", "warning")
         return redirect(url_for("download_page"))
 

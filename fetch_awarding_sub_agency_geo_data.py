@@ -5,6 +5,9 @@ import requests
 from cassandra.cluster import Cluster
 
 import config
+from logging_config import setup_logging
+
+logger = setup_logging()
 
 try:
     from tqdm import tqdm
@@ -31,7 +34,7 @@ def get_geolocation(name):
 def main():
     cluster = Cluster(contact_points=[config.CASSANDRA_HOST], port=config.CASSANDRA_PORT)
     session = cluster.connect("usaspending_data")
-    print("Connected to Cassandra cluster.")
+    logger.info("Connected to Cassandra cluster.")
 
     query = "SELECT awarding_sub_agency FROM awards"
     statement = session.prepare(query)
@@ -46,11 +49,11 @@ def main():
         if awarding_sub_agency:
             awarding_sub_agency_counter[awarding_sub_agency] += 1
 
-    print("Counting completed.")
-    print(f"Total unique awarding_sub_agency: {len(awarding_sub_agency_counter)}\n")
-    print("Awarding Sub-Agencies and their counts:")
+    logger.info("Counting completed.")
+    logger.info(f"Total unique awarding_sub_agency: {len(awarding_sub_agency_counter)}\n")
+    logger.info("Awarding Sub-Agencies and their counts:")
     for name, count in awarding_sub_agency_counter.most_common():
-        print(f"{name}: {count}")
+        logger.info(f"{name}: {count}")
 
     insert_query = """
     INSERT INTO awarding_sub_agency_with_geo (awarding_sub_agency, latitude, longitude)
@@ -67,13 +70,13 @@ def main():
         if lat is not None and lon is not None:
             geo_data_list.append((name, lat, lon))
             successful_geo_count += 1
-            print(f"Collected geolocation for: {name}")
+            logger.info(f"Collected geolocation for: {name}")
         time.sleep(1)
 
     if geo_data_list:
         for record in geo_data_list:
             session.execute(insert_statement, record)
-        print(
+        logger.info(
             f"\nGeolocation data for {successful_geo_count} awarding_sub_agencies inserted into 'awarding_sub_agency_with_geo' table.")
 
     cluster.shutdown()

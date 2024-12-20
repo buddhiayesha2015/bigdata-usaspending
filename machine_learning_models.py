@@ -3,6 +3,9 @@ import os
 import matplotlib
 
 import config
+from logging_config import setup_logging
+
+logger = setup_logging()
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -78,7 +81,7 @@ def main():
     for c in cat_columns:
         distinct_count = df_awards.select(c).distinct().count()
         if distinct_count < 2:
-            print(f"[WARNING] Column '{c}' has {distinct_count} distinct value(s). Skipping it.")
+            logger.warn(f"Column '{c}' has {distinct_count} distinct value(s). Skipping it.")
         else:
             valid_cat_columns.append(c)
 
@@ -104,7 +107,7 @@ def main():
     df_corr = assembler_for_corr.transform(df_indexed).select("corr_features")
 
     if df_corr.rdd.isEmpty():
-        print("[WARNING] No data rows remain for correlation. Skipping correlation heatmap.")
+        logger.warn("No data rows remain for correlation. Skipping correlation heatmap.")
     else:
         corr_matrix = Correlation.corr(df_corr, "corr_features", method="pearson").head()[0]
         corr_array = corr_matrix.toArray()
@@ -183,7 +186,7 @@ def main():
     # Evaluate
     pred_reg = pipeline_model_reg.transform(test_reg)
     if pred_reg.rdd.isEmpty():
-        print("[WARNING] No test data for Regression after pipeline. Skipping evaluation.")
+        logger.warn("No test data for Regression after pipeline. Skipping evaluation.")
         lr_rmse = float("nan")
     else:
         lr_evaluator = RegressionEvaluator(
@@ -199,7 +202,7 @@ def main():
 
     pred_class = pipeline_model_class.transform(test_class)
     if pred_class.rdd.isEmpty():
-        print("[WARNING] No test data for Classification. Skipping evaluation.")
+        logger.warn("No test data for Classification. Skipping evaluation.")
         logreg_auc = float("nan")
     else:
         bc_evaluator = BinaryClassificationEvaluator(

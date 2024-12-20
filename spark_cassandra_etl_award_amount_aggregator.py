@@ -5,6 +5,9 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import sum as _sum
 
 import config
+from logging_config import setup_logging
+
+logger = setup_logging()
 
 
 def main(aggregator):
@@ -15,7 +18,7 @@ def main(aggregator):
         geo_table = "awarding_sub_agency_with_geo"
         output_table = "total_award_amount_by_awarding_sub_agency"
     else:
-        print(f"ERROR: Unsupported aggregator: {aggregator}")
+        logger.error(f"Unsupported aggregator: {aggregator}")
         sys.exit(1)
 
     spark = (

@@ -1,10 +1,13 @@
-from cassandra.cluster import Cluster
-from cassandra.query import SimpleStatement
-from collections import Counter
-import requests
 import time
+from collections import Counter
+
+import requests
+from cassandra.cluster import Cluster
 
 import config
+from logging_config import setup_logging
+
+logger = setup_logging()
 
 try:
     from tqdm import tqdm
@@ -32,7 +35,7 @@ def main():
     cluster = Cluster(contact_points=[config.CASSANDRA_HOST], port=config.CASSANDRA_PORT)
     session = cluster.connect("usaspending_data")
 
-    print("Connected to Cassandra cluster.")
+    logger.info("Connected to Cassandra cluster.")
 
     # Fetch all recipient_names
     query = "SELECT recipient_name FROM awards"
@@ -48,13 +51,13 @@ def main():
         if recipient_name:
             recipient_counter[recipient_name] += 1
 
-    print("Counting completed.")
-    print(f"Total unique recipient_names: {len(recipient_counter)}\n")
+    logger.info("Counting completed.")
+    logger.info(f"Total unique recipient_names: {len(recipient_counter)}\n")
 
     top_n = 5
-    print(f"Top {top_n} recipients by award count:")
+    logger.info(f"Top {top_n} recipients by award count:")
     for name, count in recipient_counter.most_common(top_n):
-        print(f"{name}: {count}")
+        logger.info(f"{name}: {count}")
 
     insert_query = """
     INSERT INTO recipient_name_with_geo (recipient_name, latitude, longitude)
@@ -73,14 +76,14 @@ def main():
         if lat is not None and lon is not None:
             geo_data_list.append((name, lat, lon))
             successful_geo_count += 1
-            print(f"Collected {successful_geo_count}/{max_geo}: {name}")
+            logger.info(f"Collected {successful_geo_count}/{max_geo}: {name}")
         time.sleep(1)
 
     # Insert geolocation data into Cassandra
     if geo_data_list:
         for record in geo_data_list:
             session.execute(insert_statement, record)
-        print(
+        logger.info(
             f"\nGeolocation data for {successful_geo_count} recipients inserted into 'recipient_name_with_geo' table.")
     cluster.shutdown()
 
