@@ -16,7 +16,7 @@
 <div id="mapDiv" style="width: 100%; height: 600px;"></div>
 
 <h1 class="mt-5">Sankey Diagram (Awarding Agency to Recipient)</h1>
-<div id="sankeyDiv" style="width:100%; height:600px;"></div>
+<div id="sankeyDiv" style="width:100%; height:800px;"></div>
 
 <h1 class="mt-5">Pie Chart (Awarding Agency vs Award Amount)</h1>
 <div id="pieDiv" style="width:100%; height:500px;"></div>
@@ -139,10 +139,7 @@
                 hovertemplate: 'Source: %{source.label}<br>Target: %{target.label}<br>Value: %{customdata}<extra></extra>',
             }
         };
-        const layout = {
-            height: 750,
-            width: 1100,
-        };
+        const layout = {};
 
         Plotly.newPlot("sankeyDiv", [data], layout, {responsive: true});
     }
