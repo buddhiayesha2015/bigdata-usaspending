@@ -16,7 +16,7 @@ from logging_config import setup_logging
 
 logger = setup_logging()
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder="../static")
 logger.info("BigData & Tools USASpending Flask app initialized")
 
 # Get the secret key from the environment variable
@@ -31,9 +31,9 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Load Pipeline Models
-REG_PIPELINE_PATH = "outputs/pipeline_regression"
-CLASS_PIPELINE_PATH = "outputs/pipeline_classification"
-CLUSTER_PIPELINE_PATH = "outputs/pipeline_clustering"
+REG_PIPELINE_PATH = "../outputs/pipeline_regression"
+CLASS_PIPELINE_PATH = "../outputs/pipeline_classification"
+CLUSTER_PIPELINE_PATH = "../outputs/pipeline_clustering"
 
 pipeline_model_reg = PipelineModel.load(REG_PIPELINE_PATH)
 pipeline_model_class = PipelineModel.load(CLASS_PIPELINE_PATH)
