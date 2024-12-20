@@ -11,8 +11,8 @@ from pyspark.ml import PipelineModel
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 
-import config
-from logging_config import setup_logging
+from app import config
+from app.logging_config import setup_logging
 
 logger = setup_logging()
 
@@ -31,9 +31,9 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Load Pipeline Models
-REG_PIPELINE_PATH = "../outputs/pipeline_regression"
-CLASS_PIPELINE_PATH = "../outputs/pipeline_classification"
-CLUSTER_PIPELINE_PATH = "../outputs/pipeline_clustering"
+REG_PIPELINE_PATH = "outputs/pipeline_regression"
+CLASS_PIPELINE_PATH = "outputs/pipeline_classification"
+CLUSTER_PIPELINE_PATH = "outputs/pipeline_clustering"
 
 pipeline_model_reg = PipelineModel.load(REG_PIPELINE_PATH)
 pipeline_model_class = PipelineModel.load(CLASS_PIPELINE_PATH)
@@ -301,6 +301,7 @@ def fetch_data():
     batch_size = 2000  # Records per batch
     page_size = 100  # Records per page as per response
     pages_per_batch = batch_size // page_size  # Number of pages per batch
+    logger.info("Data fetching frequency: %s, Pages per batch: %d", frequency, pages_per_batch)
 
     has_next = True
     page = 1
