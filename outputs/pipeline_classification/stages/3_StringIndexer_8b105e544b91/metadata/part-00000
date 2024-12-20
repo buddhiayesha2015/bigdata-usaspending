@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1734763700477,"sparkVersion":"3.4.4","uid":"StringIndexer_8b105e544b91","paramMap":{"inputCol":"funding_sub_agency","handleInvalid":"skip","outputCol":"funding_sub_agency_index"},"defaultParamMap":{"handleInvalid":"error","outputCol":"StringIndexer_8b105e544b91__output","stringOrderType":"frequencyDesc"}}
