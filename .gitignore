@@ -5,4 +5,3 @@ out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
-/config_secrets.py

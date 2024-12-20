@@ -1,3 +1,4 @@
+import os
 import random
 import time
 import uuid
@@ -10,11 +11,12 @@ from pyspark.ml import PipelineModel
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 
-from config_secrets import BDT_SECRET_KEY
 import config
 
 app = Flask(__name__)
-app.secret_key = BDT_SECRET_KEY
+
+# Get the secret key from the environment variable
+app.secret_key = os.getenv("BDT_SECRET_KEY")
 
 spark = SparkSession.builder \
     .appName("FlaskSparkInference") \
