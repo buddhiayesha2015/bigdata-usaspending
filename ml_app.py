@@ -43,7 +43,7 @@ except Exception as e:
 
 
 # Flask Routes
-@app.route("/dashboard", methods=["GET"])
+@app.route("/", methods=["GET"])
 def dashboard():
     # Read data for the Map
     df_map_recipient = (
