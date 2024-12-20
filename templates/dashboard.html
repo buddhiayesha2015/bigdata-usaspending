@@ -122,10 +122,23 @@
                 value: value
             }
         };
-
         const layout = {};
 
         Plotly.newPlot("sankeyDiv", [data], layout, {responsive: true});
+    }
+
+    function formatNumberWithSuffix(num) {
+        if (num >= 1e12) {
+            return (num / 1e12).toFixed(2) + " Trillion";
+        } else if (num >= 1e9) {
+            return (num / 1e9).toFixed(2) + " Billion";
+        } else if (num >= 1e6) {
+            return (num / 1e6).toFixed(2) + " Million";
+        } else if (num >= 1e3) {
+            return (num / 1e3).toFixed(2) + " Thousand";
+        } else {
+            return num.toString();
+        }
     }
 
     // Pie Chart
@@ -139,18 +152,21 @@
 
         const labels = Object.keys(subagencyMap);
         const values = Object.values(subagencyMap);
+        const formattedValues = values.map(amt => formatNumberWithSuffix(amt));
 
         const data = [{
             type: "pie",
             labels: labels,
             values: values,
+            name: "",
             textinfo: "percent",
-            hoverinfo: "label+value+percent",
+            hovertemplate: '%{label}: $%{customdata}<br>%{percent}',
+            texttemplate: '%{customdata}<br>%{percent}',
+            customdata: formattedValues,
             marker: {
                 colors: Plotly.d3.scale.category10().range()
-            }
+            },
         }];
-
         const layout = {};
 
         Plotly.newPlot("pieDiv", data, layout, {responsive: true});
@@ -177,9 +193,7 @@
             line: {shape: "spline", color: "green"},
             marker: {size: 8}
         };
-
         const data = [trace];
-
         const layout = {
             xaxis: {title: "Month", tickmode: "linear"},
             yaxis: {title: "Total Award Amount ($)"}
