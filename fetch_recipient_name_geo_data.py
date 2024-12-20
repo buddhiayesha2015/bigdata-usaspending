@@ -4,6 +4,8 @@ from collections import Counter
 import requests
 import time
 
+import config
+
 try:
     from tqdm import tqdm
 
@@ -27,7 +29,7 @@ def get_geolocation(name):
 
 
 def main():
-    cluster = Cluster(contact_points=['127.0.0.1'], port=9042)
+    cluster = Cluster(contact_points=[config.CASSANDRA_HOST], port=config.CASSANDRA_PORT)
     session = cluster.connect("usaspending_data")
 
     print("Connected to Cassandra cluster.")

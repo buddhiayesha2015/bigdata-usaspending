@@ -4,6 +4,8 @@ import sys
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import sum as _sum
 
+import config
+
 
 def main(aggregator):
     if aggregator == "recipient_name":
@@ -19,8 +21,8 @@ def main(aggregator):
     spark = (
         SparkSession.builder
         .appName("CassandraSparkETL")
-        .config("spark.cassandra.connection.host", "127.0.0.1")
-        .config("spark.cassandra.connection.port", "9042")
+        .config("spark.cassandra.connection.host", config.CASSANDRA_HOST)
+        .config("spark.cassandra.connection.port", config.CASSANDRA_PORT)
         .getOrCreate()
     )
 

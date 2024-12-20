@@ -11,16 +11,17 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 
 from secrets import SECRET_KEY
+import config
 
 app = Flask(__name__)
-app.secret_key =  SECRET_KEY
+app.secret_key = SECRET_KEY
 
 spark = SparkSession.builder \
     .appName("FlaskSparkInference") \
     .master("local[*]") \
     .config("spark.jars.packages", "com.datastax.spark:spark-cassandra-connector_2.12:3.3.0") \
-    .config("spark.cassandra.connection.host", "127.0.0.1") \
-    .config("spark.cassandra.connection.port", "9042") \
+    .config("spark.cassandra.connection.host", config.CASSANDRA_HOST) \
+    .config("spark.cassandra.connection.port", config.CASSANDRA_PORT) \
     .getOrCreate()
 
 # Load Pipeline Models
@@ -33,7 +34,7 @@ pipeline_model_class = PipelineModel.load(CLASS_PIPELINE_PATH)
 pipeline_model_cluster = PipelineModel.load(CLUSTER_PIPELINE_PATH)
 
 try:
-    cassandra_cluster = Cluster(contact_points=['127.0.0.1'], port=9042)
+    cassandra_cluster = Cluster(contact_points=[config.CASSANDRA_HOST], port=config.CASSANDRA_PORT)
     cassandra_session = cassandra_cluster.connect("usaspending_data")
 except Exception as e:
     print(f"Error connecting to Cassandra: {e}")

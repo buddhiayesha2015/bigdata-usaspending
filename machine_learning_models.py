@@ -2,6 +2,8 @@ import os
 
 import matplotlib
 
+import config
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -35,8 +37,8 @@ def main():
     spark = (
         SparkSession.builder
         .appName("MultiUseCase_ML_Models_WithPipelines")
-        .config("spark.cassandra.connection.host", "127.0.0.1")
-        .config("spark.cassandra.connection.port", "9042")
+        .config("spark.cassandra.connection.host", config.CASSANDRA_HOST)
+        .config("spark.cassandra.connection.port", config.CASSANDRA_PORT)
         .getOrCreate()
     )
 

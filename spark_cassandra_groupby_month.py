@@ -1,13 +1,15 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import sum as _sum, month as month_func
 
+import config
+
 
 def main():
     spark = (
         SparkSession.builder
         .appName("GroupByASAAndMonth")
-        .config("spark.cassandra.connection.host", "127.0.0.1")
-        .config("spark.cassandra.connection.port", "9042")
+        .config("spark.cassandra.connection.host", config.CASSANDRA_HOST)
+        .config("spark.cassandra.connection.port", config.CASSANDRA_PORT)
         .getOrCreate()
     )
 
