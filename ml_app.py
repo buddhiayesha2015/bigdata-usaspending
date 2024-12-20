@@ -10,11 +10,11 @@ from pyspark.ml import PipelineModel
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 
-from secrets import SECRET_KEY
+from config_secrets import BDT_SECRET_KEY
 import config
 
 app = Flask(__name__)
-app.secret_key = SECRET_KEY
+app.secret_key = BDT_SECRET_KEY
 
 spark = SparkSession.builder \
     .appName("FlaskSparkInference") \
