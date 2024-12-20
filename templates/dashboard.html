@@ -77,11 +77,24 @@
         Plotly.newPlot("mapDiv", [trace], layout, {responsive: true});
     }
 
+    function formatNumberWithSuffix(num) {
+        if (num >= 1e12) {
+            return (num / 1e12).toFixed(2) + " Trillion";
+        } else if (num >= 1e9) {
+            return (num / 1e9).toFixed(2) + " Billion";
+        } else if (num >= 1e6) {
+            return (num / 1e6).toFixed(2) + " Million";
+        } else if (num >= 1e3) {
+            return (num / 1e3).toFixed(2) + " Thousand";
+        } else {
+            return num.toString();
+        }
+    }
+
     // Sankey Diagram
     function plotSankey() {
         const subagencies = [...new Set(sankeyData.map(d => d.awarding_sub_agency))];
         const recipients = [...new Set(sankeyData.map(d => d.recipient_name))];
-
         const nodeLabels = [...subagencies, ...recipients];
 
         function getSubagencyIndex(sub) {
@@ -95,6 +108,7 @@
         const source = [];
         const target = [];
         const value = [];
+        const formattedValues = [];
 
         sankeyData.forEach(d => {
             const sIdx = getSubagencyIndex(d.awarding_sub_agency);
@@ -104,6 +118,7 @@
                 source.push(sIdx);
                 target.push(rIdx);
                 value.push(val);
+                formattedValues.push(formatNumberWithSuffix(val));
             }
         });
 
@@ -111,34 +126,25 @@
             type: "sankey",
             orientation: "h",
             node: {
-                pad: 15,
-                thickness: 20,
+                pad: 20,
+                thickness: 30,
                 line: {color: "black", width: 0.5},
                 label: nodeLabels
             },
             link: {
                 source: source,
                 target: target,
-                value: value
+                value: value,
+                customdata: formattedValues,
+                hovertemplate: 'Source: %{source.label}<br>Target: %{target.label}<br>Value: %{customdata}<extra></extra>',
             }
         };
-        const layout = {};
+        const layout = {
+            height: 750,
+            width: 1100,
+        };
 
         Plotly.newPlot("sankeyDiv", [data], layout, {responsive: true});
-    }
-
-    function formatNumberWithSuffix(num) {
-        if (num >= 1e12) {
-            return (num / 1e12).toFixed(2) + " Trillion";
-        } else if (num >= 1e9) {
-            return (num / 1e9).toFixed(2) + " Billion";
-        } else if (num >= 1e6) {
-            return (num / 1e6).toFixed(2) + " Million";
-        } else if (num >= 1e3) {
-            return (num / 1e3).toFixed(2) + " Thousand";
-        } else {
-            return num.toString();
-        }
     }
 
     // Pie Chart
