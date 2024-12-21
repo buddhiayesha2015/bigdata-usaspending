@@ -27,7 +27,6 @@ and data management using big data tools such as Apache Spark and Cassandra.
 **Operating System:** Ubuntu 22.04.5 LTS
 
 **Author:** Buddhi Ayesha
-
 **Date:** 2024-12-20
 """
 

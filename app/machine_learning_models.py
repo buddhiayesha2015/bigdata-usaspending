@@ -1,9 +1,34 @@
+"""
+BigData & Tools USASpending Application
+===========================================
+
+![USASpending Explorer](../assets/usaspending_explorer.svg)
+
+### Module Overview
+
+This module is a core component of the **BigData & Tools USASpending Application**. It is responsible for:
+
+- **Data Ingestion:** Connecting to a Cassandra database to retrieve USASpending award data.
+- **Data Preprocessing:** Cleaning the data by handling missing values, extracting temporal features (month and year), and filtering out invalid records.
+- **Correlation Analysis:** Performing correlation computations on numerical and categorical features and generating a heatmap visualization to identify relationships between variables.
+- **Machine Learning Pipelines:** Building and training pipelines for three machine learning tasks:
+- **Regression:** Predicting award amounts using Linear Regression.
+- **Classification:** Categorizing awards into high or low based on the median award amount using Logistic Regression.
+- **Clustering:** Grouping awards into clusters using K-Means clustering.
+- **Model Evaluation and Saving:** Evaluating the performance of the trained models, logging the results, and saving both the evaluation metrics and the trained pipeline models for future use.
+
+The module leverages PySpark for distributed data processing and machine learning, ensuring scalability and efficiency when handling large datasets. Additionally, it utilizes Matplotlib for generating visualizations and incorporates custom configuration and logging setups to maintain robust and maintainable code.
+
+** Author: ** Buddhi Ayesha
+** Date: ** 2024 - 12 - 21
+"""
+
 import os
 
 import matplotlib
 
-import config
-from logging_config import setup_logging
+from app import config
+from app.logging_config import setup_logging
 
 logger = setup_logging()
 
@@ -32,6 +57,60 @@ from pyspark.ml.stat import Correlation
 
 
 def main():
+    """
+    Executes the USASpending data processing and machine learning pipeline.
+
+    This function performs the following steps:
+
+    1. **Setup Environment:**
+       - Creates necessary output directories if they do not exist.
+       - Initializes a Spark session with Cassandra configurations.
+
+    2. **Data Ingestion:**
+       - Reads award data from a Cassandra table into a Spark DataFrame.
+
+    3. **Data Preprocessing:**
+       - Drops rows with missing values in required columns.
+       - Extracts month and year from the `start_date`.
+       - Filters out records with non-positive award amounts.
+       - Identifies valid categorical columns based on distinct value counts.
+
+    4. **Correlation Analysis:**
+       - Indexes categorical columns.
+       - Assembles numeric features for correlation computation.
+       - Generates and saves a correlation heatmap if sufficient data is available.
+
+    5. **Pipeline Construction:**
+       - Builds separate pipelines for regression, classification, and clustering tasks.
+       - Includes stages for indexing, encoding, feature assembling, and model training.
+
+    6. **Model Training and Evaluation:**
+       - Splits data into training and testing sets.
+       - Fits each pipeline on the training data.
+       - Evaluates regression and classification models using RMSE and AUC metrics, respectively.
+       - Performs clustering using K-Means and retrieves cluster centers.
+
+    7. **Results Saving:**
+       - Compiles summary statistics and model evaluation metrics.
+       - Writes the compiled information to a text file.
+       - Saves the trained pipeline models for future use.
+
+    **Logging:**
+    - Logs warnings for columns with insufficient distinct values.
+    - Logs warnings if correlation analysis or model evaluations are skipped due to lack of data.
+
+    **Output:**
+    - Correlation heatmap saved as `static/images/correlation_heatmap.png`.
+    - Model training information saved in `outputs/model_training_info.txt`.
+    - Trained pipeline models saved in the `outputs` directory.
+
+    **Dependencies:**
+    - Requires a running Cassandra instance with the appropriate keyspace and table.
+    - Utilizes PySpark for data processing and machine learning.
+    - Uses Matplotlib for visualization.
+    - Custom configuration and logging modules (`config`, `logging_config`).
+    """
+
     if not os.path.exists("outputs"):
         os.makedirs("outputs")
     if not os.path.exists("static/images"):

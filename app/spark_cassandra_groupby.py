@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import sum as _sum
 
-import config
+from app import config
 
 
 def main():

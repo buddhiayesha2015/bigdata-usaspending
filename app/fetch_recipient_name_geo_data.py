@@ -4,8 +4,8 @@ from collections import Counter
 import requests
 from cassandra.cluster import Cluster
 
-import config
-from logging_config import setup_logging
+from app import config
+from app.logging_config import setup_logging
 
 logger = setup_logging()
 

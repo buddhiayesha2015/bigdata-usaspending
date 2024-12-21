@@ -4,8 +4,8 @@ import sys
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import sum as _sum
 
-import config
-from logging_config import setup_logging
+from app import config
+from app.logging_config import setup_logging
 
 logger = setup_logging()
 
