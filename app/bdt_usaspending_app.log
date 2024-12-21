@@ -1,0 +1,253 @@
+2024-12-20 17:19:34,662 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:19:38,700 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:20:57,223 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:21:09,566 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:21:09,606 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:21:09,606 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:21:09,609 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:21:09,713 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-20 17:21:09,713 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-12-20 17:21:09,714 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:21:10,109 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:21:22,750 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:21:22,791 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:21:22,792 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:21:22,794 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:21:22,819 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:21:22,819 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:21:25,845 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:21:25] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2024-12-20 17:21:25,845 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:21:25,885 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:21:25] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-12-20 17:21:25,886 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:21:25] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-12-20 17:21:25,909 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:21:25] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-12-20 17:21:25,916 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:21:25] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=Ykkye3MVpT3D10r3zorg HTTP/1.1" 200 -
+2024-12-20 17:24:11,407 - werkzeug - INFO -  * Detected change in '/home/buddhi/Desktop/Projects/code/bigdata-usaspending/app/ml_app.py', reloading
+2024-12-20 17:24:11,408 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:24:11,528 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:24:11,979 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:24:24,712 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:24:24,757 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:24:24,757 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:24:24,760 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:24:24,784 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:24:24,785 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:24:27,286 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:24:27,398 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:24:31,547 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:24:44,581 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:24:44,623 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:24:44,624 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:24:44,626 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:24:44,731 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-20 17:24:44,731 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-12-20 17:24:44,731 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:24:45,131 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:24:58,061 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:24:58,106 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:24:58,107 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:24:58,110 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:24:58,137 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:24:58,137 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:25:01,065 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:25:01] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2024-12-20 17:25:01,066 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:25:01,115 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:25:01] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-12-20 17:25:01,116 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:25:01] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-12-20 17:25:01,141 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:25:01] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=WeJBT24G6UPiOjOZrUdw HTTP/1.1" 200 -
+2024-12-20 17:26:40,321 - werkzeug - INFO -  * Detected change in '/home/buddhi/Desktop/Projects/code/bigdata-usaspending/app/ml_app.py', reloading
+2024-12-20 17:26:40,322 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:26:40,447 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:26:40,881 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:26:53,325 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:26:53,367 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:26:53,367 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:26:53,370 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:26:53,394 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:26:53,394 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:27:22,399 - werkzeug - INFO -  * Detected change in '/home/buddhi/Desktop/Projects/code/bigdata-usaspending/app/ml_app.py', reloading
+2024-12-20 17:27:22,400 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:27:22,497 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:27:22,917 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:27:35,241 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2024-12-20 17:27:35,242 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:27:35,242 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2024-12-20 17:27:35,244 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+    ^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o23.sc
+2024-12-20 17:27:35,246 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:27:35,246 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+    ^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o23.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/buddhi/anaconda3/envs/usaspending/lib/python3.12/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2024-12-20 17:27:35,247 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:27:35,249 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:27:35,457 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:27:47,198 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:27:59,951 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:27:59,992 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:27:59,992 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:27:59,995 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:28:00,108 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-20 17:28:00,108 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-12-20 17:28:00,109 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:28:00,508 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:28:13,268 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:28:13,314 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:28:13,314 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:28:13,317 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:28:13,337 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:28:13,338 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:28:16,336 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:28:16] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2024-12-20 17:28:16,337 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:28:16,388 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:28:16] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-12-20 17:28:16,388 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:28:16] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-12-20 17:28:16,410 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:28:16] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=yueNnJk5HVuugJuK87tU HTTP/1.1" 200 -
+2024-12-20 17:28:57,904 - werkzeug - INFO -  * Detected change in '/home/buddhi/Desktop/Projects/code/bigdata-usaspending/app/ml_app.py', reloading
+2024-12-20 17:28:57,906 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:28:58,008 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:28:58,468 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:29:11,212 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:29:11,254 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:29:11,255 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:29:11,258 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:29:11,279 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:29:11,279 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:29:14,278 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:29:14] "GET /dashboard HTTP/1.1" 200 -
+2024-12-20 17:29:14,278 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:29:14,400 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:29:14] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:29:14,844 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:29:14] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:29:44,621 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:29:44] "GET /dashboard HTTP/1.1" 200 -
+2024-12-20 17:29:44,622 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:29:44,700 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:29:44] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:00,103 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:00] "GET /dashboard HTTP/1.1" 200 -
+2024-12-20 17:30:00,104 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:30:00,203 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:00] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:00,389 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:00] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:01,173 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:01] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:01,187 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:01] "[33mGET /static/images/correlation_heatmap.png HTTP/1.1[0m" 404 -
+2024-12-20 17:30:15,960 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:15] "GET /regression HTTP/1.1" 200 -
+2024-12-20 17:30:16,000 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:16] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:20,789 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:20] "POST /regression HTTP/1.1" 200 -
+2024-12-20 17:30:20,790 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:30:20,857 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:20] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:23,277 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:23] "GET /clustering HTTP/1.1" 200 -
+2024-12-20 17:30:23,321 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:23] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:30:26,744 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:26] "GET /download HTTP/1.1" 200 -
+2024-12-20 17:30:26,806 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:30:26] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:33:48,498 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:33:48] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:33:48,556 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:33:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-20 17:33:52,420 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:33:52] "[33mGET /static/ HTTP/1.1[0m" 404 -
+2024-12-20 17:34:13,913 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:34:13] "[33mGET /..statistics HTTP/1.1[0m" 404 -
+2024-12-20 17:34:17,307 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:34:17] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-20 17:35:44,644 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:35:44] "[33mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 404 -
+2024-12-20 17:36:15,816 - werkzeug - INFO -  * Detected change in '/home/buddhi/Desktop/Projects/code/bigdata-usaspending/app/ml_app.py', reloading
+2024-12-20 17:36:15,817 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:36:15,922 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:36:16,375 - root - INFO - BigData & Tools USASpending Flask app initialized
+2024-12-20 17:36:29,699 - cassandra.cluster - WARNING - Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['127.0.0.1'], lbp = None)
+2024-12-20 17:36:29,740 - cassandra.cluster - WARNING - Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:36:29,740 - cassandra.cluster - WARNING - Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2024-12-20 17:36:29,743 - cassandra.policies - INFO - Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2024-12-20 17:36:29,764 - werkzeug - WARNING -  * Debugger is active!
+2024-12-20 17:36:29,764 - werkzeug - INFO -  * Debugger PIN: 138-630-897
+2024-12-20 17:36:29,871 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:29] "GET /static/usaspending_explorer.svg HTTP/1.1" 200 -
+2024-12-20 17:36:29,900 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-20 17:36:34,123 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:34] "GET /download HTTP/1.1" 200 -
+2024-12-20 17:36:34,173 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:34] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:36:40,141 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:40] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:36:42,163 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:42] "GET /static/images/correlation_heatmap.png HTTP/1.1" 200 -
+2024-12-20 17:36:42,165 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:42] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:36:49,007 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:49] "GET /dashboard HTTP/1.1" 200 -
+2024-12-20 17:36:49,008 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:36:49,185 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:49] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:36:55,250 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:55] "GET /dashboard HTTP/1.1" 200 -
+2024-12-20 17:36:55,250 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:36:55,456 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:55] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:36:56,210 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:56] "GET /regression HTTP/1.1" 200 -
+2024-12-20 17:36:56,253 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:56] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:36:59,873 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:59] "POST /regression HTTP/1.1" 200 -
+2024-12-20 17:36:59,874 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:36:59,929 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:36:59] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:37:01,047 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:01] "GET /classification HTTP/1.1" 200 -
+2024-12-20 17:37:01,092 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:01] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:37:05,063 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:05] "POST /classification HTTP/1.1" 200 -
+2024-12-20 17:37:05,063 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:37:05,107 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:05] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:37:07,624 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:07] "GET /clustering HTTP/1.1" 200 -
+2024-12-20 17:37:07,648 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:07] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:37:10,263 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:10] "POST /clustering HTTP/1.1" 200 -
+2024-12-20 17:37:10,264 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:37:10,319 - werkzeug - INFO - 127.0.0.1 - - [20/Dec/2024 17:37:10] "[36mGET /static/usaspending_explorer.svg HTTP/1.1[0m" 304 -
+2024-12-20 17:42:44,073 - werkzeug - INFO -  * Detected change in '/home/buddhi/Desktop/Projects/code/bigdata-usaspending/app/ml_app.py', reloading
+2024-12-20 17:42:44,075 - py4j.clientserver - INFO - Closing down clientserver connection
+2024-12-20 17:42:44,175 - werkzeug - INFO -  * Restarting with stat
+2024-12-20 17:42:44,672 - py4j.clientserver - INFO - Closing down clientserver connection
