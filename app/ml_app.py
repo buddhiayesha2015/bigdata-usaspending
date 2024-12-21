@@ -1,3 +1,36 @@
+"""
+BigData & Tools USASpending Application
+============================================
+
+![USASpending Explorer](../assets/usaspending_explorer.svg)
+
+This module implements a BigData application for interacting with USASpending data.
+It provides various endpoints for data visualization, machine learning inference,
+and data management using big data tools such as Apache Spark and Cassandra.
+
+**Features:**
+- **Dashboard:** Displays award amounts by recipient and sub-agency.
+- **Correlation Visualization:** Visualizes correlations within the data.
+- **Machine Learning Models:** Implements regression, classification, and clustering models for award data.
+- **Data Fetching & Insertion:** Retrieves data from the USASpending API and inserts it into Cassandra.
+- **Download History Tracking:** Keeps a log of data downloads.
+
+**Dependencies:**
+- **Apache Spark:** 3.4.4
+- **Apache Cassandra:** 4.1.7
+- **Scala:** 2.12.17
+- **Python:** 3.12.8
+- **pytest:** 8.3.4
+- **OpenJDK:** 11.0.25
+- **Flask:** 3.1.0
+
+**Operating System:** Ubuntu 22.04.5 LTS
+
+**Author:** Buddhi Ayesha
+
+**Date:** 2024-12-20
+"""
+
 import os
 import random
 import time
@@ -51,6 +84,16 @@ except Exception as e:
 # Flask Routes
 @app.route("/dashboard", methods=["GET"])
 def dashboard():
+    """
+    Render the dashboard page with various data visualizations.
+
+    This route reads data from Cassandra tables related to award amounts by recipient and
+    sub-agency, as well as data for Sankey diagrams and monthly awards. The data is
+    processed using Spark and passed to the dashboard template for rendering.
+
+    Returns:
+        A rendered HTML template for the dashboard.
+    """
     # Read data for the Map
     df_map_recipient = (
         spark.read
@@ -105,11 +148,30 @@ def dashboard():
 
 @app.route("/correlation")
 def show_correlation():
+    """
+    Render the correlation visualization page.
+
+    Returns:
+        A rendered HTML template for correlation visualization.
+    """
     return render_template("correlation.html")
 
 
 @app.route("/regression", methods=["GET", "POST"])
 def regression():
+    """
+    Handle regression model inference for award amount prediction.
+
+    On GET request:
+        Renders the regression form with default values.
+
+    On POST request:
+        Processes form data, performs regression prediction using the loaded pipeline model,
+        and flashes the prediction result.
+
+    Returns:
+        A rendered HTML template for regression or a redirect with flashed messages.
+    """
     awarding_agency = "Department of Defense"
     awarding_sub_agency = None
     contract_award_type = None
@@ -164,6 +226,19 @@ def regression():
 
 @app.route("/classification", methods=["GET", "POST"])
 def classification():
+    """
+    Handle classification model inference for award amount classification.
+
+    On GET request:
+        Renders the classification form with default values.
+
+    On POST request:
+        Processes form data, performs classification using the loaded pipeline model,
+        and flashes the classification result with confidence.
+
+    Returns:
+        A rendered HTML template for classification or a redirect with flashed messages.
+    """
     awarding_agency = "Department of Defense"
     awarding_sub_agency = None
     contract_award_type = None
@@ -222,6 +297,19 @@ def classification():
 
 @app.route("/clustering", methods=["GET", "POST"])
 def clustering():
+    """
+    Handle clustering model inference for award data clustering.
+
+    On GET request:
+        Renders the clustering form with default values.
+
+    On POST request:
+        Processes form data, performs clustering using the loaded pipeline model,
+        and flashes the cluster ID result.
+
+    Returns:
+        A rendered HTML template for clustering or a redirect with flashed messages.
+    """
     awarding_agency = "Department of Defense"
     awarding_sub_agency = None
     contract_award_type = None
@@ -277,11 +365,27 @@ def clustering():
 
 @app.route("/download", methods=["GET"])
 def download_page():
+    """
+    Render the download page for fetching data.
+
+    Returns:
+        A rendered HTML template for the download page.
+    """
     return render_template("download.html")
 
 
 @app.route("/fetch_data", methods=["POST"])
 def fetch_data():
+    """
+    Fetch data from the USASpending API and insert it into Cassandra.
+
+    This route handles the data fetching process based on user-specified frequency
+    and date range. It fetches data in batches, handles pagination, and inserts
+    records into the Cassandra database. It also records the download history.
+
+    Returns:
+        A redirect to the download page with flashed messages indicating the status.
+    """
     frequency = request.form.get('frequency')
     start_date_str = request.form.get('start_date')
     end_date_str = request.form.get('end_date')
@@ -454,6 +558,15 @@ def fetch_data():
 
 
 def to_date(d):
+    """
+    Convert a string to a date object.
+
+    Args:
+        d (str): Date string in the format 'YYYY-MM-DD'.
+
+    Returns:
+        datetime.date or None: Converted date object if successful, else None.
+    """
     if d:
         try:
             return datetime.strptime(d, '%Y-%m-%d').date()
@@ -463,4 +576,7 @@ def to_date(d):
 
 
 if __name__ == "__main__":
+    """
+    Runs the Flask app in debug mode.
+    """
     app.run(debug=True)
