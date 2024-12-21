@@ -10,9 +10,9 @@ and data management using big data tools such as Apache Spark and Cassandra.
 
 **Features:**
 - **Dashboard:** Displays award amounts by recipient and sub-agency.
-- **Correlation Visualization:** Visualizes correlations within the data.
 - **Machine Learning Models:** Implements regression, classification, and clustering models for award data.
 - **Data Fetching & Insertion:** Retrieves data from the USASpending API and inserts it into Cassandra.
+- **Correlation Visualization:** Visualizes correlations within the data.
 - **Download History Tracking:** Keeps a log of data downloads.
 
 **Dependencies:**
