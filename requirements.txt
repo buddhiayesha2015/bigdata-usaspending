@@ -1,0 +1,7 @@
+flask
+requests
+pytest
+pyspark==3.4.4
+cassandra-driver
+matplotlib
+numpy
