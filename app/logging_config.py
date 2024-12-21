@@ -1,4 +1,5 @@
 import logging
+import datetime
 
 
 def setup_logging():
@@ -7,9 +8,11 @@ def setup_logging():
         return logger
 
     logger.setLevel(logging.INFO)
+    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    log_file_name = f"logs/bdt_usas_{timestamp}.log"
 
     # Create file handler
-    file_handler = logging.FileHandler("bdt_usaspending_app.log")
+    file_handler = logging.FileHandler(log_file_name)
     file_handler.setLevel(logging.INFO)
 
     # Create console handler
