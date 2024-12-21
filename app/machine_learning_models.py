@@ -19,8 +19,8 @@ This module is a core component of the **BigData & Tools USASpending Application
 
 The module leverages PySpark for distributed data processing and machine learning, ensuring scalability and efficiency when handling large datasets. Additionally, it utilizes Matplotlib for generating visualizations and incorporates custom configuration and logging setups to maintain robust and maintainable code.
 
-** Author: ** Buddhi Ayesha
-** Date: ** 2024 - 12 - 21
+**Author:** Buddhi Ayesha
+**Date:** 2024-12-21
 """
 
 import os
@@ -56,41 +56,41 @@ from pyspark.ml.evaluation import RegressionEvaluator, BinaryClassificationEvalu
 from pyspark.ml.stat import Correlation
 
 
-def main():
+def machine_learning_pipeline():
     """
     Executes the USASpending data processing and machine learning pipeline.
 
     This function performs the following steps:
 
-    1. **Setup Environment:**
+    1).**Setup Environment:**
        - Creates necessary output directories if they do not exist.
        - Initializes a Spark session with Cassandra configurations.
 
-    2. **Data Ingestion:**
+    2).**Data Ingestion:**
        - Reads award data from a Cassandra table into a Spark DataFrame.
 
-    3. **Data Preprocessing:**
+    3).**Data Preprocessing:**
        - Drops rows with missing values in required columns.
        - Extracts month and year from the `start_date`.
        - Filters out records with non-positive award amounts.
        - Identifies valid categorical columns based on distinct value counts.
 
-    4. **Correlation Analysis:**
+    4).**Correlation Analysis:**
        - Indexes categorical columns.
        - Assembles numeric features for correlation computation.
        - Generates and saves a correlation heatmap if sufficient data is available.
 
-    5. **Pipeline Construction:**
+    5).**Pipeline Construction:**
        - Builds separate pipelines for regression, classification, and clustering tasks.
        - Includes stages for indexing, encoding, feature assembling, and model training.
 
-    6. **Model Training and Evaluation:**
+    6).**Model Training and Evaluation:**
        - Splits data into training and testing sets.
        - Fits each pipeline on the training data.
        - Evaluates regression and classification models using RMSE and AUC metrics, respectively.
        - Performs clustering using K-Means and retrieves cluster centers.
 
-    7. **Results Saving:**
+    7).**Results Saving:**
        - Compiles summary statistics and model evaluation metrics.
        - Writes the compiled information to a text file.
        - Saves the trained pipeline models for future use.
@@ -331,4 +331,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    machine_learning_pipeline()

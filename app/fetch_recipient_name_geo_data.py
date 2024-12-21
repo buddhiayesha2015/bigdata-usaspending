@@ -1,3 +1,18 @@
+"""
+BigData & Tools USASpending Application
+===========================================
+
+![USASpending Explorer](../assets/usaspending_explorer.svg)
+
+### Module Overview
+
+Processes recipient names from the Cassandra `awards` table, counts their occurrences, retrieves geolocation data for
+top recipients using the Nominatim API, and stores the geolocation information back into the Cassandra database.
+
+**Author:** Buddhi Ayesha
+**Date:** 2024-12-21
+"""
+
 import time
 from collections import Counter
 
@@ -18,6 +33,24 @@ except ImportError:
 
 
 def get_geolocation(name):
+    """
+    Retrieve the geographical coordinates (latitude and longitude) for a given location name.
+
+    This function queries the Nominatim API from OpenStreetMap to obtain the geolocation data.
+
+    Args:
+        name (str): The name of the location to geocode.
+
+    Returns:
+        Tuple[Optional[float], Optional[float]]:
+            A tuple containing the latitude and longitude as floats if found,
+            otherwise (None, None).
+
+    Example:<br>
+        `>>> lat, lon = get_geolocation("New York")`<br>
+        `>>> print(lat, lon)`<br>
+        `40.7127281 -74.0060152`
+    """
     url = 'https://nominatim.openstreetmap.org/search'
     params = {'q': name, 'format': 'json', 'limit': 1}
     headers = {'User-Agent': 'CassandraBackupScript/1.0'}
@@ -31,7 +64,27 @@ def get_geolocation(name):
     return None, None
 
 
-def main():
+def fetch_recipient():
+    """
+    This function for processing recipient names and storing their geolocations.
+
+    This function connects to a Cassandra cluster, retrieves recipient names from the
+    'awards' table, counts the occurrences of each recipient, fetches geolocation data
+    for the top recipients, and inserts the geolocation data into the 'recipient_name_with_geo'
+    table.
+
+    Steps:
+        1. Connect to the Cassandra cluster using configuration parameters.
+        2. Fetch all `recipient_name` entries from the `awards` table.
+        3. Count the occurrences of each unique `recipient_name`.
+        4. Log the total number of unique recipient names and the top recipients by award count.
+        5. Fetch geolocation data for the top recipients (up to a maximum limit).
+        6. Insert the collected geolocation data into the Cassandra table.
+        7. Shutdown the Cassandra cluster connection.
+
+    Raises:
+        None
+    """
     cluster = Cluster(contact_points=[config.CASSANDRA_HOST], port=config.CASSANDRA_PORT)
     session = cluster.connect("usaspending_data")
 
@@ -89,4 +142,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    fetch_recipient()

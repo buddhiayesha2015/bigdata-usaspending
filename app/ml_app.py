@@ -4,6 +4,8 @@ BigData & Tools USASpending Application
 
 ![USASpending Explorer](../assets/usaspending_explorer.svg)
 
+### Module Overview
+
 This module implements a BigData application for interacting with USASpending data.
 It provides various endpoints for data visualization, machine learning inference,
 and data management using big data tools such as Apache Spark and Cassandra.
